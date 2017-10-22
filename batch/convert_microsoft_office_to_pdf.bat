@@ -3,7 +3,8 @@ SETLOCAL
 SETLOCAL EnableExtensions EnableDelayedExpansion
 
 REM Check that the script can run
-SET script=%~n0
+SET scriptDirectory=%~dp0
+SET script=%scriptDirectory%%~n0
 IF NOT EXIST "%script%.vbs" (
     ECHO [ERROR] VBScript for conversion not found
     GOTO :EOF
@@ -11,21 +12,15 @@ IF NOT EXIST "%script%.vbs" (
     SET vbs="%script%.vbs"
 )
 
-REM Get number of documents
-SET count=0
-FOR %%x in (*.doc,*.ppt) DO SET /a count+=1
-
-IF %count% EQU 0 (
-    ECHO [ERROR] No documents found in current folder
+IF "%1" == "" (
+    ECHO [ERROR] No file provided
     GOTO :EOF
+) ELSE (
+    SET name=%1
 )
 
-SET number=1
-FOR %%f IN (*.doc,*.ppt) DO (
-    ECHO [WORK] Converting "%%f" (!number!/%count%^)
-    cscript //B "%vbs%" "%%~dpnxf"
-    SET /a number+=1
-)
+ECHO [WORK] Converting "%name%"
+cscript //B "%vbs%" "%name%"
 
 ECHO [INFO] All operations are completed
 
