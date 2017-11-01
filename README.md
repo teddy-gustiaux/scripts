@@ -16,6 +16,10 @@ Please note that certain scripts have been adapted from existing code found onli
 
  - `get_chkdsk_results.ps1` is adapted from code found in this [tutorial](https://www.sevenforums.com/tutorials/96938-check-disk-chkdsk-read-event-viewer-log.html) on Windows Seven Forums.
 
+ **`registry`**
+
+- `remove_3D_Objects_Folder` and `restore_3D_Objects_Folder` have been directly taken from this [article](https://www.howtogeek.com/331361/how-to-remove-the-3d-objects-folder-from-this-pc-on-windows-10/) on How-To Geek.
+
 ## License
 
 Distributed under the [MIT license](http://opensource.org/licenses/MIT).
