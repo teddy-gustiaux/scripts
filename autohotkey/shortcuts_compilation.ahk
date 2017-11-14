@@ -12,6 +12,12 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;*******************************************************
 
 ;-------------------------------------------------------
+; Keep window on top
+;-------------------------------------------------------
+^SPACE::  Winset, Alwaysontop, , A
+;-------------------------------------------------------
+
+;-------------------------------------------------------
 ; Replace default calculator
 ;-------------------------------------------------------
 ^NumpadEnter::Run "C:\Program Files (x86)\Moffsoft FreeCalc\MoffFreeCalc.exe"
