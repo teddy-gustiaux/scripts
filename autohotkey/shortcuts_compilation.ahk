@@ -14,7 +14,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;-------------------------------------------------------
 ; Keep window on top
 ;-------------------------------------------------------
-^SPACE::  Winset, Alwaysontop, , A
+!+^T::  Winset, Alwaysontop, , A
 ;-------------------------------------------------------
 
 ;-------------------------------------------------------
