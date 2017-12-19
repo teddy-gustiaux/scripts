@@ -17,7 +17,8 @@ Please note that certain scripts have been adapted from existing code found onli
 
 **`powershell`**
 
- - `get_chkdsk_results.ps1` is adapted from code found in this [tutorial](https://www.sevenforums.com/tutorials/96938-check-disk-chkdsk-read-event-viewer-log.html) on Windows Seven Forums.
+- `get_chkdsk_results.ps1` is adapted from code found in this [tutorial](https://www.sevenforums.com/tutorials/96938-check-disk-chkdsk-read-event-viewer-log.html) on Windows Seven Forums.
+- `add_content_every_line_start.ps1` is adapted from code found in this [article](http://www.dreamsharepoint.com/powershell-add-something-to-the-end-of-each-line-in-a-text-file/) on DreamSharePoint.
 
  **`registry`**
 
