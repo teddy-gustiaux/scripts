@@ -30,6 +30,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 !Space::Send !+^{=}
 ; With the down button of the mouse
 XButton1::Send !+^{)}
+^RButton::Send !+^{)}
 ;-------------------------------------------------------
 
 ;-------------------------------------------------------
