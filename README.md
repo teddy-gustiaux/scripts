@@ -13,7 +13,7 @@ Please note that certain scripts have been adapted from existing code found onli
  - `manage_pictures.bat` uses the amazing [ExifTool](https://www.sno.phy.queensu.ca/~phil/exiftool/) by Phil Harvey.
 - `export_putty_settings_and_sessions.bat` has been directly taken from this [thread](https://stackoverflow.com/questions/13023920/how-to-export-putty-sessions-list) on Stack Overflow.
 - `rebuild_icon_cache.bat` has been directly taken from this [tutorial](https://www.tenforums.com/tutorials/5645-rebuild-icon-cache-windows-10-a.html) on Windows Ten Forums.
-
+- `turn_hyper-v_off.reg` and `turn_hyper-v_on.reg` have been directly taken from this [thread](https://stackoverflow.com/questions/30496116/how-to-disable-hyper-v-in-command-line) on Stack Overflow.
 
 **`powershell`**
 
