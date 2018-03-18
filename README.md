@@ -6,14 +6,19 @@ A set of miscellaneous scripts for personal use. Feel free to adapt them for you
 
 ## Attributions
 
-Please note that certain scripts have been adapted from existing code found online, or use other softwares.
+Please note that certain scripts are based on existing documentation, or are adapted from existing code found online, or use other softwares.
 
 **`batch`**
- - `convert_microsoft_office_to_pdf.vbs` contains code which has been written on this [blog post](http://www.thoughtasylum.com/blog/2012/12/20/vbscript-to-convert-microsoft-office-files-word-excel-powerp.html) by Thought Asylum.  The associated batch file is original work, and still works with both Microsoft Office 2013 and 2016.
- - `manage_pictures.bat` uses the amazing [ExifTool](https://www.sno.phy.queensu.ca/~phil/exiftool/) by Phil Harvey.
+
+- `convert_microsoft_office_to_pdf.vbs` contains code which has been written on this [blog post](http://www.thoughtasylum.com/blog/2012/12/20/vbscript-to-convert-microsoft-office-files-word-excel-powerp.html) by Thought Asylum.  The associated batch file is original work, and still works with both Microsoft Office 2013 and 2016.
+- `manage_pictures.bat` uses the amazing [ExifTool](https://www.sno.phy.queensu.ca/~phil/exiftool/) by Phil Harvey.
 - `export_putty_settings_and_sessions.bat` has been directly taken from this [thread](https://stackoverflow.com/questions/13023920/how-to-export-putty-sessions-list) on Stack Overflow.
 - `rebuild_icon_cache.bat` has been directly taken from this [tutorial](https://www.tenforums.com/tutorials/5645-rebuild-icon-cache-windows-10-a.html) on Windows Ten Forums.
 - `turn_hyper-v_off.reg` and `turn_hyper-v_on.reg` have been directly taken from this [thread](https://stackoverflow.com/questions/30496116/how-to-disable-hyper-v-in-command-line) on Stack Overflow.
+
+**`firefox`**
+
+- [Disable or re-enable Pocket for Firefox](https://support.mozilla.org/en-US/kb/disable-or-re-enable-pocket-for-firefox)
 
 **`powershell`**
 
