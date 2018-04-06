@@ -118,7 +118,7 @@ IF NOT [%name%] == [] (
     SET number=1
     FOR %%x in (*.jpg) DO (
         REM Get the date at which the picture has been taken
-		IF %count% EQU 1 (
+		IF !includetime! EQU 1 (
 			FOR /f %%i in ('CALL %exif% -d "%%Y-%%m-%%d-%%H.%%M.%%S" -DateTimeOriginal -S -s "%%x"') DO SET datetime=%%i
 		) ELSE (
 			FOR /f %%i in ('CALL %exif% -d "%%Y-%%m-%%d" -DateTimeOriginal -S -s "%%x"') DO SET datetime=%%i
