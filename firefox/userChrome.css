@@ -1,0 +1,10 @@
+/* See https://www.userchrome.org/what-is-userchrome-css.html#colorbookmarkfolder */
+
+#bookmarks-view treechildren::-moz-tree-image(container),
+#PlacesToolbarItems toolbarbutton[container="true"][label="Inbox"] .toolbarbutton-icon,
+#PlacesToolbarItems menu[container="true"][label="Inbox"] > .menu-iconic-left > .menu-iconic-icon,
+#PlacesChevronPopup menu[container="true"][label="Inbox"] > .menu-iconic-left > .menu-iconic-icon,
+#BMB_bookmarksPopup menu[container="true"][label="Inbox"] > .menu-iconic-left > .menu-iconic-icon,
+#bookmarksMenu menu[container="true"][label="Inbox"] > .menu-iconic-left > .menu-iconic-icon {
+  fill: #FF8A80 !important;
+}
