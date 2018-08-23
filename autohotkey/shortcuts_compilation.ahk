@@ -6,6 +6,19 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
+;;*******************************************************
+; SETUP
+;*******************************************************
+
+;-------------------------------------------------------
+; OSD for volume
+;-------------------------------------------------------
+Gui +LastFound +AlwaysOnTop -Caption +ToolWindow  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
+Gui, Color, FFD54F  ; Set background color
+Gui, Font, s32 w600, Arial  ; Set a large font size (32-point).
+Gui, Font,, Ubuntu Condensed  ; Preferred font.
+Gui, Add, Text, vOSDTextValue +Center, MUTE
+;-------------------------------------------------------
 
 ;;*******************************************************
 ; CUSTOM SHORTCUTS
@@ -62,15 +75,15 @@ switchDesktop()
 ; Double-click on taskbar to launch the Task Manager
 ;-------------------------------------------------------
 ~LButton::
-    if (A_PriorHotKey = A_ThisHotKey and A_TimeSincePriorHotkey < 500) {
-        WinGetClass, Class, A
-        if ( Class = "WorkerW" ) or ( Class = "Progman" )
+	if (A_PriorHotKey = A_ThisHotKey and A_TimeSincePriorHotkey < 500) {
+		WinGetClass, Class, A
+		if ( Class = "WorkerW" ) or ( Class = "Progman" )
 		{
-            ; TrayTip,, Double-click on Desktop
-        } else if ( Class = "Shell_TrayWnd" ) {
-            run taskmgr.exe
-        }
-    }
+			; TrayTip,, Double-click on Desktop
+		} else if ( Class = "Shell_TrayWnd" ) {
+			run taskmgr.exe
+		}
+	}
 return
 ;-------------------------------------------------------
 
@@ -85,13 +98,38 @@ return
 ;-------------------------------------------------------
 ;  Adjust volume by scrolling the mouse wheel over the taskbar
 ;-------------------------------------------------------
-#If MouseIsOver("ahk_class Shell_TrayWnd")
-WheelUp::Send {Volume_Up}
-WheelDown::Send {Volume_Down}
-MButton::Send {Volume_Mute}
-
 MouseIsOver(WinTitle) {
     MouseGetPos,,, Win
     return WinExist(WinTitle . " ahk_id " . Win)
 }
+
+ShowOSD(CustomText) 
+{
+	SetTimer, HideOSD, 500  ; Hide after specified delay
+	GuiControl, Text, OSDTextValue, %CustomText%  ; Set text
+	Gui, Show, xCenter y900 NoActivate  ; NoActivate avoids deactivating the currently active window.
+	return
+}
+
+HideOSD()
+{
+	Gui, Hide,
+}
+
+#If MouseIsOver("ahk_class Shell_TrayWnd")
+WheelUp::
+	Send {Volume_Up}
+	SoundGet, master_volume
+	ShowOSD(Round(master_volume))
+return
+WheelDown::
+	Send {Volume_Down}
+	SoundGet, master_volume
+	ShowOSD(Round(master_volume))
+return
+MButton::
+	Send {Volume_Mute}
+	ShowOSD("MUTE")
+return
+
 ;-------------------------------------------------------
