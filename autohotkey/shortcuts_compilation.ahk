@@ -74,3 +74,10 @@ switchDesktop()
 return
 ;-------------------------------------------------------
 
+;-------------------------------------------------------
+; Cycle through open windows with the mouse
+;-------------------------------------------------------
+~RButton & MButton::AltTabMenu
+~RButton & WheelDown::AltTab
+~RButton & WheelUp::ShiftAltTab
+;-------------------------------------------------------
