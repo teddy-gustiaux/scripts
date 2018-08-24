@@ -1,4 +1,4 @@
-﻿#NoTrayIcon
+#NoTrayIcon
 #Persistent
 #SingleInstance force
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
@@ -17,7 +17,7 @@ Gui +LastFound +AlwaysOnTop -Caption +ToolWindow  ; +ToolWindow avoids a taskbar
 Gui, Color, FFD54F  ; Set background color
 Gui, Font, s32 w600, Arial  ; Set a large font size (32-point).
 Gui, Font,, Ubuntu Condensed  ; Preferred font.
-Gui, Add, Text, vOSDTextValue +Center, MUTE
+Gui, Add, Text, vOSDTextValue +Center, UNMUTE
 ;-------------------------------------------------------
 
 ;;*******************************************************
@@ -129,7 +129,14 @@ WheelDown::
 return
 MButton::
 	Send {Volume_Mute}
-	ShowOSD("MUTE")
+	Sleep, 100 
+	SoundGet, Mute, Master, MUTE
+	if (Mute = "ON")
+	{
+		ShowOSD("MUTE")
+	} else {
+		ShowOSD("UNMUTE")
+	}
 return
 
 ;-------------------------------------------------------
