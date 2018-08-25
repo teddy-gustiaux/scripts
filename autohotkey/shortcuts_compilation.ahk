@@ -72,22 +72,6 @@ switchDesktop()
 ;-------------------------------------------------------
 
 ;-------------------------------------------------------
-; Double-click on taskbar to launch the Task Manager
-;-------------------------------------------------------
-~LButton::
-	if (A_PriorHotKey = A_ThisHotKey and A_TimeSincePriorHotkey < 500) {
-		WinGetClass, Class, A
-		if ( Class = "WorkerW" ) or ( Class = "Progman" )
-		{
-			; TrayTip,, Double-click on Desktop
-		} else if ( Class = "Shell_TrayWnd" ) {
-			run taskmgr.exe
-		}
-	}
-return
-;-------------------------------------------------------
-
-;-------------------------------------------------------
 ; Cycle through open windows with the mouse
 ;-------------------------------------------------------
 ~RButton & MButton::AltTabMenu
