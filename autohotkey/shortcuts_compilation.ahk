@@ -1,4 +1,4 @@
-#NoTrayIcon
+﻿#NoTrayIcon
 #Persistent
 #SingleInstance force
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
@@ -27,12 +27,14 @@ Gui, Add, Text, vOSDTextValue +Center, UNMUTE
 ;-------------------------------------------------------
 ; Keep window on top
 ;-------------------------------------------------------
+#If ; Context-insensitive hotkey
 !+^T::  Winset, Alwaysontop, , A
 ;-------------------------------------------------------
 
 ;-------------------------------------------------------
 ; Replace default calculator
 ;-------------------------------------------------------
+#If
 ^NumpadEnter::Run "C:\Program Files (x86)\Moffsoft FreeCalc\MoffFreeCalc.exe"
 ;-------------------------------------------------------
 
@@ -40,8 +42,10 @@ Gui, Add, Text, vOSDTextValue +Center, UNMUTE
 ; Call Listary
 ;-------------------------------------------------------
 ; With Alt + Space
+#If
 !Space::Send !+^{=}
 ; With the down button of the mouse
+#If
 XButton1::Send !+^{)}
 ^RButton::Send !+^{)}
 ;-------------------------------------------------------
@@ -50,6 +54,7 @@ XButton1::Send !+^{)}
 ; Switch between the desktops
 ;-------------------------------------------------------
 ; With the up button of the mouse
+#If
 ^XButton1:: switchDesktop() ;
 XButton2:: switchDesktop() ;
 
@@ -74,6 +79,7 @@ switchDesktop()
 ;-------------------------------------------------------
 ; Cycle through open windows with the mouse
 ;-------------------------------------------------------
+#If
 ~RButton & MButton::AltTabMenu
 ~RButton & WheelDown::AltTab
 ~RButton & WheelUp::ShiftAltTab
