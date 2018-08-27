@@ -1,0 +1,9 @@
+Windows Registry Editor Version 5.00
+
+; This will disable the Cloud-Delivered Protection and Automatic Sample Submission of Windows Defender.
+; It simulates the usage of local GPO to avoid having to dismiss Windows Defender warnings after each reboot.
+; Information found here: https://windowsreport.com/disable-windows-defender-cloud-based-automatic-sample-submission/
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]
+"SubmitSamplesConsent"=dword:00000002
+"SpynetReporting"=dword:00000000
