@@ -15,6 +15,7 @@ Please note that certain scripts are based on existing documentation, or are ada
 - `manage_pictures.bat` uses the amazing [ExifTool](https://www.sno.phy.queensu.ca/~phil/exiftool/) by Phil Harvey.
 - `export_putty_settings_and_sessions.bat` has been directly taken from this [thread](https://stackoverflow.com/questions/13023920/how-to-export-putty-sessions-list) on Stack Overflow.
 - `rebuild_icon_cache.bat` has been directly taken from this [tutorial](https://www.tenforums.com/tutorials/5645-rebuild-icon-cache-windows-10-a.html) on Windows Ten Forums.
+- `remove_adobe_acrobat_browser_extension.reg` uses adapted code from this [thread](https://stackoverflow.com/questions/6836566/batch-file-delete-all-files-and-folders-in-a-directory) on Stack Overflow.
 - `turn_hyper-v_off.bat` and `turn_hyper-v_on.bat` have been directly taken from this [thread](https://stackoverflow.com/questions/30496116/how-to-disable-hyper-v-in-command-line) on Stack Overflow.
 - `switch_to_dark_mode.bat` and `switch_to_light_mode.bat` have been directly taken from this [article](https://www.howtogeek.com/356087/how-to-automatically-enable-windows-10s-dark-theme-at-night/) on How-To Geek.
 
