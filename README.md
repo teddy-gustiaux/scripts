@@ -36,6 +36,7 @@ Please note that certain scripts are based on existing documentation, or are ada
 - `remove_onedrive_to_file_explorer.reg` and `restore_onedrive_to_file_explorer.reg` have been directly taken from this [article](https://www.howtogeek.com/225973/how-to-disable-onedrive-and-remove-it-from-file-explorer-on-windows-10/) on How-To Geek.
 - `add_copy_to_folder_and_move_to_folder_context_menu.reg` has been directly taken from this [tutorial](https://www.tenforums.com/tutorials/29141-add-copy-folder-move-folder-context-menu-windows-10-a.html) on Windows Ten Forums.
 - `clear_mpc-hc_favorites.reg` is adapted from code found in this [thread](https://stackoverflow.com/questions/7044985/how-can-i-auto-elevate-my-batch-file-so-that-it-requests-from-uac-administrator) on Stack Overflow.
+- `fix_asus_smart_gesture_cpu_usage.reg` has been created from information found in this [thread](https://superuser.com/questions/897488/asus-smart-gesture-getting-cpu-to-3ghz) on Super User.
 
 ## License
 
