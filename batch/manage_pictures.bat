@@ -81,6 +81,7 @@ FOR %%x in (*.jpg) DO (
     FOR /f %%i in ('CALL %exif% -d "%%Y-%%m-%%d" -DateTimeOriginal -S -s "%%x"') DO SET datetime=%%i
     IF [!datetime!] == [] (
         SET /a wrong+=1
+		ECHO [MISSING] "%%x" does not have a datetime
     )
     SET /a number+=1
 )
