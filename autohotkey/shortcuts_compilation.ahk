@@ -1,10 +1,11 @@
-#NoTrayIcon
+﻿#NoTrayIcon
 #Persistent
 #SingleInstance force
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+SetTitleMatchMode 2 ; A window's title can contain WinTitle anywhere inside it to be a match. 
 
 ;;*******************************************************
 ; SETUP
@@ -144,4 +145,25 @@ return
 ^+0::Send {U+00C0} ; À
 ^+7::Send {U+00C8} ; È
 ^+2::Send {U+00C9} ; É
+;-------------------------------------------------------
+
+;-------------------------------------------------------
+; Toggle bookmarks toolbar in Firefox when pressing "²"
+;-------------------------------------------------------
+#If WinActive("ahk_class MozillaWindowClass")
+SC029::
+	Send {Alt}
+	Sleep 1
+	Send {Right}
+	Sleep 1
+	Send {Right}
+	Sleep 1
+	Send {Down}
+	Sleep 1
+	Send {Right}
+	Sleep 1
+	Send {Down}
+	Sleep 1
+	Send {Enter 2}
+return
 ;-------------------------------------------------------
