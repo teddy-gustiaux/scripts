@@ -1,4 +1,4 @@
-﻿#NoTrayIcon
+#NoTrayIcon
 #Persistent
 #SingleInstance force
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
@@ -9,6 +9,12 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;;*******************************************************
 ; SETUP
 ;*******************************************************
+
+;-------------------------------------------------------
+; For debug purposes only - Reload the script
+;-------------------------------------------------------
+; CapsLock::Reload
+;-------------------------------------------------------
 
 ;-------------------------------------------------------
 ; OSD for volume
