@@ -129,6 +129,20 @@ QtObject {
         }
     }
 
+    /**
+    * This function is called when a note gets stored to disk if
+    * "Allow note file name to be different from headline" is enabled
+    * in the settings
+    *
+    * It allows you to modify the name of the note file
+    * Keep in mind that you have to care about duplicate names yourself!
+    *
+    * Return an empty string if the file name of the note should
+    * not be modified
+    *
+    * @param {NoteApi} note - the note object of the stored note
+    * @return {string} the file name of the note
+    */
     function handleNoteTextFileNameHook(note) {
         // the current note name is the fallback
         var fileName = note.name;
@@ -143,19 +157,29 @@ QtObject {
             if (tagNameList[i] === "journal") isJournal = true;
         }
 
-        // if so, rename the note
+        // if so, check if the note name is correct
         if (isJournal) {
-            fileName = "journal-" + fileName.substring(5, 15);
+
+            var journalDateRegex = /^journal-(\d{4})-(\d{2})-(\d{2})/;
+
+            if (!journalDateRegex.test(fileName)) {
+
+                // if not, rename the note
+                fileName = "journal-" + fileName.substring(5, 15);
+
+                var noteExists = script.noteExistsByFileName(fileName + ".md", note.id);
+                if (noteExists) {
+                    script.log("Note already exists - abort rename operation");
+                    return '';
+                } else {
+                    script.log("Renaming note to: " + fileName);
+                    return fileName;
+                }
+      
+            }
         }
 
-        var noteExists = script.noteExistsByFileName(fileName + ".md", note.id);
-        if (noteExists) {
-            script.log("Note already exists - abort rename operation");
-            return note.name;
-        } else {
-            script.log("Renaming note to: " + fileName);
-            return fileName;
-        }
+        return '';
     }
 
 }
