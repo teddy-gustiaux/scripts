@@ -160,12 +160,16 @@ QtObject {
         // if so, check if the note name is correct
         if (isJournal) {
 
-            var journalDateRegex = /^journal-(\d{4})-(\d{2})-(\d{2})/;
+            var journalDateRegex = /^journal-/;
 
             if (!journalDateRegex.test(fileName)) {
 
+                var m = new Date();
+
+                var noteDate = m.getFullYear() + "-" + ("0" + (m.getMonth()+1)).slice(-2) + "-" + ("0" + m.getDate()).slice(-2);
+
                 // if not, rename the note
-                fileName = "journal-" + fileName.substring(5, 15);
+                fileName = "journal-" + noteDate;
 
                 var noteExists = script.noteExistsByFileName(fileName + ".md", note.id);
                 if (noteExists) {
