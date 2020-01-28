@@ -14,7 +14,7 @@ FOR %%x IN (*.mkv,*.mp4) DO (
 )
 
 ECHO [INFO] Found %counter% corrupted files
-FOR /F "tokens=2 delims==" %%s IN ('SET listOfCorruptedFiles[') DO ECHO [CORRUPTED] %%s
+IF !counter! gtr 0 FOR /F "tokens=2 delims==" %%s IN ('SET listOfCorruptedFiles[') DO ECHO [CORRUPTED] %%s
 
 ECHO [INFO] All operations are completed
 ENDLOCAL
