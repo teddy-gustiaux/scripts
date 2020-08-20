@@ -1,4 +1,4 @@
-﻿#NoTrayIcon
+#NoTrayIcon
 #Persistent
 #SingleInstance force
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
@@ -10,6 +10,12 @@ SetTitleMatchMode 2 ; A window's title can contain WinTitle anywhere inside it t
 ;;*******************************************************
 ; SETUP
 ;*******************************************************
+
+;-------------------------------------------------------
+; Global configuration
+;-------------------------------------------------------
+EnableAzertyShortcuts := false
+;-------------------------------------------------------
 
 ;-------------------------------------------------------
 ; For debug purposes only - Reload the script
@@ -53,8 +59,8 @@ Gui, Add, Text, vOSDTextValue +Center, UNMUTE
 !Space::Send !+^{=}
 ; With the down button of the mouse
 #If
-XButton1::Send !+^{)}
-^RButton::Send !+^{)}
+XButton1::Send !+^{[}
+^RButton::Send !+^{[}
 ;-------------------------------------------------------
 
 ;-------------------------------------------------------
@@ -86,21 +92,21 @@ switchDesktop()
 ;-------------------------------------------------------
 ; Cycle through open windows with the mouse
 ;-------------------------------------------------------
-#If
+#If ; All special Alt-tab actions are not affected by #IfWin or #If.
 ~RButton & MButton::AltTabMenu
 ~RButton & WheelDown::AltTab
 ~RButton & WheelUp::ShiftAltTab
 ;-------------------------------------------------------
 
 ;-------------------------------------------------------
-;  Adjust volume by scrolling the mouse wheel over the taskbar
+; Adjust volume by scrolling the mouse wheel over the taskbar
 ;-------------------------------------------------------
 MouseIsOver(WinTitle) {
     MouseGetPos,,, Win
     return WinExist(WinTitle . " ahk_id " . Win)
 }
 
-ShowOSD(CustomText) 
+ShowOSD(CustomText)	
 {
 	SetTimer, HideOSD, 500  ; Hide after specified delay
 	GuiControl, Text, OSDTextValue, %CustomText%  ; Set text
@@ -138,17 +144,7 @@ return
 ;-------------------------------------------------------
 
 ;-------------------------------------------------------
-; Send capital accented letters
-;-------------------------------------------------------
-#If
-^+9::Send {U+00C7} ; Ç
-^+0::Send {U+00C0} ; À
-^+7::Send {U+00C8} ; È
-^+2::Send {U+00C9} ; É
-;-------------------------------------------------------
-
-;-------------------------------------------------------
-; Toggle bookmarks toolbar in Firefox when pressing "²"
+; Toggle bookmarks toolbar in Firefox when pressing "`"
 ;-------------------------------------------------------
 #If WinActive("ahk_class MozillaWindowClass")
 SC029::
@@ -168,9 +164,23 @@ SC029::
 return
 ;-------------------------------------------------------
 
+;=======================================================
+; FOR AZERTY LAYOUT
+;=======================================================
+
 ;-------------------------------------------------------
 ; Send backtick when pressing "²"
 ;-------------------------------------------------------
-#If
+#If EnableAzertyShortcuts
 +SC029::Send {U+0060} ; `
+;-------------------------------------------------------
+
+;-------------------------------------------------------
+; Send capital accented letters
+;-------------------------------------------------------
+#If EnableAzertyShortcuts
+^+9::Send {U+00C7} ; Ç
+^+0::Send {U+00C0} ; À
+^+7::Send {U+00C8} ; È
+^+2::Send {U+00C9} ; É
 ;-------------------------------------------------------
