@@ -119,7 +119,7 @@ HideOSD()
 	Gui, Hide,
 }
 
-#If MouseIsOver("ahk_class Shell_TrayWnd")
+#If (MouseIsOver("ahk_class Shell_TrayWnd") or MouseIsOver("ahk_class Shell_SecondaryTrayWnd"))
 WheelUp::
 	Send {Volume_Up}
 	SoundGet, master_volume
