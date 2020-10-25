@@ -41,6 +41,7 @@ Please note that certain scripts are based on existing documentation, or are ada
 - `remove_all_user_folders_to_this_pc.reg` and `restore_all_user_folders_to_this_pc.reg` have been directly taken from this [article](https://www.howtogeek.com/222057/how-to-remove-the-folders-from-%E2%80%9Cthis-pc%E2%80%9D-on-windows-10/) on How-To Geek.
 - `remove_onedrive_to_file_explorer.reg` and `restore_onedrive_to_file_explorer.reg` have been directly taken from this [article](https://www.howtogeek.com/225973/how-to-disable-onedrive-and-remove-it-from-file-explorer-on-windows-10/) on How-To Geek.
 - `turn_start_menu_web_searches_off.reg` has been directly taken from this [article](https://www.howtogeek.com/224159/how-to-disable-bing-in-the-windows-10-start-menu/) on How-To Geek.
+- `remove_shortcut_text` and `restore_shortcut_text_to_default.reg` have been directly taken from this [article](https://www.howtogeek.com/howto/windows-vista/remove-shortcut-text-from-new-shortcuts-in-vista/) on How-To Geek.
 
 ## License
 
