@@ -7,7 +7,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 SetTitleMatchMode 2 ; A window's title can contain WinTitle anywhere inside it to be a match. 
 
-;;*******************************************************
+;*******************************************************
 ; SETUP
 ;*******************************************************
 
@@ -21,11 +21,23 @@ switchedDesktop := false
 ;-------------------------------------------------------
 ; OSD for volume
 ;-------------------------------------------------------
-Gui +LastFound +AlwaysOnTop -Caption +ToolWindow  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
-Gui, Color, FFD54F  ; Set background color
-Gui, Font, s32 w600, Arial  ; Set a large font size (32-point).
-Gui, Font,, Ubuntu Condensed  ; Preferred font.
-Gui, Add, Text, vOSDTextValue +Center, UNMUTE
+Gui, VolumeGui:New
+Gui VolumeGui:+LastFound +AlwaysOnTop -Caption +ToolWindow ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
+Gui, VolumeGui:Color, FFD54F ; Set background color
+Gui, VolumeGui:Font, s32 w600, Arial ; Set a large font size (32-point).
+Gui, VolumeGui:Font,, Ubuntu Condensed ; Preferred font.
+Gui, VolumeGui:Add, Text, vOSDVolumeTextValue +Center, UNMUTE
+;-------------------------------------------------------
+
+;-------------------------------------------------------
+; OSD for microphone
+;-------------------------------------------------------
+Gui, MicrophoneGui:New
+Gui MicrophoneGui:+LastFound +AlwaysOnTop -Caption +ToolWindow ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
+Gui, MicrophoneGui:Color, ef5350 ; Set background color
+Gui, MicrophoneGui:Font, s32 w600, Arial ; Set a large font size (32-point).
+Gui, MicrophoneGui:Font,, Ubuntu Condensed ; Preferred font.
+Gui, MicrophoneGui:Add, Text, vOSDMicrophoneTextValue w500 +Center, Default text
 ;-------------------------------------------------------
 
 ;;*******************************************************
@@ -99,6 +111,41 @@ switchDesktop()
 ;-------------------------------------------------------
 
 ;-------------------------------------------------------
+; Toggle main microphone mute
+; Here, 10 is the ID of my microphone.
+;-------------------------------------------------------
+ShowMicrophoneOSD(CustomText)	
+{
+    SetTimer, HideMicrophoneOSD, 500 ; Hide after specified delay
+    GuiControl, MicrophoneGui:Text, OSDMicrophoneTextValue, %CustomText% ; Set text
+    Gui, MicrophoneGui:Show, x1325 y900 NoActivate ; NoActivate avoids deactivating the currently active window.
+    return
+}
+
+HideMicrophoneOSD()
+{
+    Gui, MicrophoneGui:Hide,
+}
+
+Pause::
+    SoundSet, +1, MASTER, mute, 10
+    SoundGet, microphone_mute , , mute, 10
+    ; -Var := "Microphone MUTE is " . microphone_mute
+    if (microphone_mute = "ON")
+    {
+        showMicrophoneOSD("Microphone MUTED")
+    } else {
+        showMicrophoneOSD("Microphone ON AIR")
+    }
+    SetTimer, HideMicrophoneOSD, -2000
+return
+
+RemoveToolTip:
+    ToolTip
+return
+;-------------------------------------------------------
+
+;-------------------------------------------------------
 ; Adjust volume by scrolling the mouse wheel over the taskbar
 ;-------------------------------------------------------
 MouseIsOver(WinTitle) {
@@ -106,40 +153,40 @@ MouseIsOver(WinTitle) {
     return WinExist(WinTitle . " ahk_id " . Win)
 }
 
-ShowOSD(CustomText)	
+ShowVolumeOSD(CustomText)	
 {
-	SetTimer, HideOSD, 500  ; Hide after specified delay
-	GuiControl, Text, OSDTextValue, %CustomText%  ; Set text
-	Gui, Show, xCenter y900 NoActivate  ; NoActivate avoids deactivating the currently active window.
-	return
+    SetTimer, HideVolumeOSD, 500 ; Hide after specified delay
+    GuiControl, VolumeGui:Text, OSDVolumeTextValue, %CustomText% ; Set text
+    Gui, VolumeGui:Show, xCenter y900 NoActivate ; NoActivate avoids deactivating the currently active window.
+    return
 }
 
-HideOSD()
+HideVolumeOSD()
 {
-	Gui, Hide,
+    Gui, VolumeGui:Hide,
 }
 
 #If (MouseIsOver("ahk_class Shell_TrayWnd") or MouseIsOver("ahk_class Shell_SecondaryTrayWnd"))
-WheelUp::
-	Send {Volume_Up}
-	SoundGet, master_volume
-	ShowOSD(Round(master_volume))
+    WheelUp::
+    Send {Volume_Up}
+    SoundGet, master_volume
+    ShowVolumeOSD(Round(master_volume))
 return
 WheelDown::
-	Send {Volume_Down}
-	SoundGet, master_volume
-	ShowOSD(Round(master_volume))
+    Send {Volume_Down}
+    SoundGet, master_volume
+    ShowVolumeOSD(Round(master_volume))
 return
 MButton::
-	Send {Volume_Mute}
-	Sleep, 100 
-	SoundGet, Mute, Master, MUTE
-	if (Mute = "ON")
-	{
-		ShowOSD("MUTE")
-	} else {
-		ShowOSD("UNMUTE")
-	}
+    Send {Volume_Mute}
+    Sleep, 100 
+    SoundGet, Mute, Master, MUTE
+    if (Mute = "ON")
+    {
+        ShowVolumeOSD("MUTE")
+    } else {
+        ShowVolumeOSD("UNMUTE")
+    }
 return
 ;-------------------------------------------------------
 
