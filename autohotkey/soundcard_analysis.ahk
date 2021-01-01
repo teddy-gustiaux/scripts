@@ -1,4 +1,4 @@
-﻿# Taken from https://www.autohotkey.com/docs/commands/SoundSet.htm
+﻿; Taken from https://www.autohotkey.com/docs/commands/SoundSet.htm
 
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
