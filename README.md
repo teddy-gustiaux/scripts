@@ -8,6 +8,10 @@ A set of miscellaneous scripts for personal use. Feel free to adapt them for you
 
 Please note that certain scripts are based on existing documentation, or are adapted from existing code found online, or use other softwares.
 
+**`autohotkey`**
+
+- `soundcard_analysis.ahk` has been directly taken from this [page](https://www.autohotkey.com/docs/commands/SoundSet.htm) of the AutoHotKey documentation.
+
 **`batch`**
 
 - `add_spacer_to_taskbar.bat` is adapted from code found in this [thread](https://superuser.com/questions/392061/how-to-make-a-shortcut-from-cmd) on Stack Overflow.
