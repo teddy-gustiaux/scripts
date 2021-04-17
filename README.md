@@ -39,6 +39,7 @@ Please note that certain scripts are based on existing documentation, or are ada
 - `clear_mpc-hc_favorites.reg` is adapted from code found in this [thread](https://stackoverflow.com/questions/7044985/how-can-i-auto-elevate-my-batch-file-so-that-it-requests-from-uac-administrator) on Stack Overflow.
 - `disable_activity_history.reg` has been directly taken from this [tutorial](https://www.tenforums.com/tutorials/100341-enable-disable-collect-activity-history-windows-10-a.html) on Windows Ten Forums.
 - `disable_cloud-delivered_protection_and_automatic_sample_submission.reg` has been directly taken from this [tutorial](https://windowsreport.com/disable-windows-defender-cloud-based-automatic-sample-submission/) on Windows Report.
+- `disable_Bing_searches.reg` has been directly taken from this [article](https://www.howtogeek.com/224159/how-to-disable-bing-in-the-windows-10-start-menu/) on How-To Geek.
 - `disable_Cortana.reg` has been directly taken from this [article](https://www.howtogeek.com/265027/how-to-disable-cortana-in-windows-10/) on How-To Geek.
 - `fix_asus_smart_gesture_cpu_usage.reg` has been created from information found in this [thread](https://superuser.com/questions/897488/asus-smart-gesture-getting-cpu-to-3ghz) on Super User.
 - `remove_3D_Objects_folder.reg` and `restore_3D_Objects_folder.reg` have been directly taken from this [article](https://www.howtogeek.com/331361/how-to-remove-the-3d-objects-folder-from-this-pc-on-windows-10/) on How-To Geek.
