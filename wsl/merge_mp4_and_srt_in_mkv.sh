@@ -7,20 +7,19 @@ for directory in */ ; do
     cd "$directory" || exit 1
 
     for mp4 in *.mp4 ; do
-    base="${mp4%mp4}"
-    output="${base// /_}"
-    args=(-o "output/${output}mkv" "${mp4}")
+        base="${mp4%mp4}"
+        output="${base// /_}"
+        args=(-o "output/${output}mkv" "${mp4}")
 
-    if [[ -f "${base}srt" ]]; then
-        args=("${args[@]}" "${base}srt")
-    fi
+        if [[ -f "${base}srt" ]]; then
+            args=("${args[@]}" "${base}srt")
+        fi
 
-    echo "[INFO] Processing [$mp4]"
+        echo "[INFO] Processing [$mp4]"
 
-    echo "mkvmerge.exe" "${args[@]}"
+        mkvmerge.exe "${args[@]}"
 
-    echo "[INFO] Completed [$mp4]"
-    cd ..
-
+        echo "[INFO] Completed [$mp4]"
     done
+    cd ..
 done
