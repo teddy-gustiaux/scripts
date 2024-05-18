@@ -9,11 +9,14 @@ for mkv in *.mkv ; do
 
     if [[ -f "${base}srt" ]]; then
         args=("${args[@]}" --language 0:eng --track-name 0:English "${base}srt")
+
+        echo "[INFO] Processing [$mkv]"
+
+        mkvmerge.exe "${args[@]}"
+
+        echo "[INFO] Completed [$mkv]"
+    else
+        echo "[INFO] Skipping [$mkv] (reason: no subtitles found)"
     fi
 
-    echo "[INFO] Processing [$mkv]"
-
-    mkvmerge.exe "${args[@]}"
-
-    echo "[INFO] Completed [$mkv]"
 done
