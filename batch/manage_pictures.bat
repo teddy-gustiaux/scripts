@@ -11,7 +11,7 @@ REM Two empty lines are required!
 
 REM Get number of pictures
 SET count=0
-FOR %%x in (*.jpg) DO SET /a count+=1
+FOR %%x in (*.jpg *.jpeg *.png) DO SET /a count+=1
 
 REM Get script directory
 SET startDirectory=%~dp0
@@ -74,7 +74,7 @@ IF /i {!answer!}=={no} (GOTO :PROCESS)
 
 SET number=1
 SET wrong=0
-FOR %%x in (*.jpg) DO (
+FOR %%x in (*.jpg *.jpeg *.png) DO (
     ECHO [WORK] Checking "%%x" (!number!/%count%^)
     REM Get the date at which the picture has been taken
     SET datetime=
@@ -117,7 +117,7 @@ IF NOT [%name%] == [] (
     IF /i {!answer!}=={no} (SET includetime=0)
 	
     SET number=1
-    FOR %%x in (*.jpg) DO (
+    FOR %%x in (*.jpg *.jpeg *.png) DO (
         REM Get the date at which the picture has been taken
 		IF !includetime! EQU 1 (
 			FOR /f %%i in ('CALL %exif% -d "%%Y-%%m-%%d-%%H.%%M.%%S" -DateTimeOriginal -S -s "%%x"') DO SET datetime=%%i
@@ -151,7 +151,7 @@ IF /i {!answer!}=={n} (GOTO :SORTING)
 IF /i {!answer!}=={no} (GOTO :SORTING)
 
 SET number=1
-FOR %%x in (*.jpg) DO (
+FOR %%x in (*.jpg *.jpeg *.png) DO (
     ECHO [WORK] Clearing "%%x" (!number!/%count%^)
     COPY "%%x" "%%x-PROCESSING" >NUL
     CALL %exif% -P -all= -all:all= -XMP:All= -IPTC:Keywords= -ThumbnailImage= -overwrite_original "%%x" >NUL
